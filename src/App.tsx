@@ -2,14 +2,15 @@ import './App.css';
 import { useState } from 'react';
 import ChuckCard from './components/chuck_card';
 import ChuckInfo from './components/chuck_info';
+import ChuckJoke from './components/chuck_joke';
 import Joke from './joke';
 
 function App() {
 
-	const [chuckGreeting, setChuckGreeting] = useState<string>("I am Chuck Norris!!!")
-	const [whalesSaved, setWhalesSaved] = useState<number>(700)
-	const [roundHouseKicks, setRoundHouseKicks] = useState<number>(300000)
-	const [jokes, setJokes] = useState<Array<Joke>>([{
+	const [chuckGreeting] = useState<string>("I am Chuck Norris!!!")
+	const [whalesSaved] = useState<number>(700)
+	const [roundHouseKicks] = useState<number>(300000)
+	const [jokes] = useState<Array<Joke>>([{
 		"id": 1,
 		"joke": "Chuck Norris doesn’t read books. He stares them down until he gets the information he wants.",
 	},
@@ -30,12 +31,13 @@ function App() {
 		<div className="App">
 
 			<h1>React props and state</h1>
-			<ChuckCard />
+			<ChuckCard greeting={chuckGreeting} />
 
 			<h2>Chuck Info: </h2>
-			<ChuckInfo />
+			<ChuckInfo whalesSaved={whalesSaved} houseKicks={roundHouseKicks} />
 
 			<h2>Jokes: </h2>
+			<ChuckJoke jokesList={jokes}/>
 
 		</div>
 	);
